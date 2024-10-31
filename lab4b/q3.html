@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery DOM Operations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .myStyle {
+            background-color: coral;
+            padding: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="myElement">Original Text</div>
+    <div id="myDIV">
+        <p>I am a myDIV.</p>
+    </div>
+    <button id="myButton">Click me</button>
+    
+    <script>
+        const bookData = {
+            "Books": [
+                {
+                    "title": "The Great Gatsby",
+                    "author": "F. Scott Fitzgerald",
+                    "publicationYear": 1925,
+                    "genres": ["Fiction", "Classics"]
+                },
+                {
+                    "title": "To Kill a Mockingbird",
+                    "author": "Harper Lee",
+                    "publicationYear": 1960,
+                    "genres": ["Fiction", "Coming-of-Age"]
+                }
+            ]
+        };
+
+        $("#myElement").text(bookData.Books[0].title); 
+		
+        $("#myDIV").addClass("myStyle").append("<p>Author: " + bookData.Books[1].author + "</p>"); 
+		
+        $("#myButton").on("click", function() {
+            const genres = bookData.Books.map(book => book.genres.join(", ")).join("; ");
+            alert("Genres of all books: " + genres);
+        });
+    </script>
+</body>
+</html>
